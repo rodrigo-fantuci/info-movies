@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script src="script.js" defer></script>
+
+  <title>Movie Listing App</title>
+</head>
+
+<body>
+
+
+  <header>
+    <div class="container">
+      <nav>
+        <svg width="1000px" height="1000px" viewBox="0 0 1000 1000" class="icon">
+          <path fill="#1EA5FC" d="M231.4,394.07L669.5,119.2C752.42,67.18,860,126.99,860,225.13v549.74c0,98.13-107.58,157.95-190.5,105.93
+            L231.4,605.93C153.41,556.99,153.41,443.01,231.4,394.07z" class="color-secondary"></path>
+          <path fill="#5A4AF4" d="M768.6,394.07L330.5,119.2C247.58,67.18,140,126.99,140,225.13v549.74c0,98.13,107.58,157.95,190.5,105.93
+            l438.1-274.87C846.59,556.99,846.59,443.01,768.6,394.07z" class="color-primary"></path>
+        </svg>
+
+        <button class="hamburger" id="hamburger">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-ul" id="nav-ul">
+          <li><a href="#">Movies</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#" id="suggest">Suggest Me
+              <svg width="24" height="24" viewBox="0 0 24 24" class="arrow">
+                <path d="M14.4299 5.92999L20.4999 12L14.4299 18.07" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M3.5 12H20.33" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <main>
+      <div class="main-header">
+        <h1>Movies</h1>
+        <p>Created by <a href="https://github.com/rodrigo-fantuci" target="_blank">Rodrigo Fantuci</a></p>
+        <p>List of movies from the The Movie DB API. <br> For more information, check <a href="https://www.themoviedb.org/documentation/api" target="_blank">The Movie DB API.</a></p>
+        <div class="input-area">
+          <svg width="24" height="24" viewBox="0 0 24 24" class="search">
+            <path d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M22 22L20 20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg> <input type="text" id="input" placeholder="Search Movies" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="main-movies" id="movies">
+        <div class="title">
+          <h3>Most Popular Movies</h3>
+          <small id="movie-count"></small>
+        </div>
+        <div class="movies"></div>
+      </div>
+    </main>
+  </div>
+
+  <footer id="footer">
+    <div class="about">
+      <p>Site criado por Rodrigo Fantuci Queiroz<br></p>
+      <p>Meu GitHub: <a href="https://github.com/rodrigo-fantuci" target="_blank"><img src="assets/svg/github.svg"></a></p>
+
+    </div>
+
+    <div class="links">
+      <ul>
+        <li><a href="#header">Home</a></li>
+        <li><a href="#movies">Movies</a></li>
+        <li><a href="#">Suggest Me</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+
+</html>
