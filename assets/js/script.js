@@ -1,14 +1,17 @@
+const body = document.querySelector('body')
+const main = document.getElementById('main-page')
 const movies = document.querySelector('.movies')
 const navBtn = document.getElementById('hamburger')
 const navUl = document.getElementById('nav-ul')
-const body = document.querySelector('body')
-
-const imgPath = 'https://image.tmdb.org/t/p/w1280'
-
-navBtn.addEventListener('click', () => navUl.classList.toggle('show'))
+const input = document.getElementById('input')
+const movieList = []
 
 getData()
 highlightInput()
+
+input.addEventListener('keydown', (e) => searchMovie(e.target.value))
+
+navBtn.addEventListener('click', () => navUl.classList.toggle('show'))
 
 async function getData() {
   const url = 'https://api.themoviedb.org/3/discover/movie?api_key=e7063b0b3862abb221912557713e4474&language=pt-BR&sort_by=popularity.desc&include_adult=true&include_video=true&page=1'
@@ -19,12 +22,13 @@ async function getData() {
 
 async function createMovieCard(data) {
   const titleCount = 40
+  const imgPath = 'https://image.tmdb.org/t/p/w1280'
 
   data.forEach((movie, idx) => {
     const movieCard = document.createElement('div')
     movieCard.classList.add('movie-card')
 
-    const { adult, backdrop_path, genre_ids, overview, poster_path, release_date, title, vote_average } = movie
+    const { poster_path, title, vote_average } = movie
 
     movieCard.innerHTML = `
       <div class="rating">
@@ -36,58 +40,18 @@ async function createMovieCard(data) {
     `
 
     movieCard.addEventListener('click', () => {
-      if (body.id === 'main-page') {
-        body.id = 'movie-page'
-        createInfoPage(idx)
-      }
+      createInfoPage(idx)
     })
+
     movies.appendChild(movieCard)
+    movieList.push(movieCard)
   })
 }
 
 function createInfoPage(index) {
-
+  localStorage.clear()
   localStorage.setItem('index', JSON.stringify(index))
   open('movie.html', '_self')
-
-  const main = document.getElementById('main-page')
-  main.classList.add('movie-info')
-
-  main.innerHTML = `
-    <div class="banner">
-      <img src="${imgPath + movie.backdrop_path}">
-      <div class="title">
-        <h3>${movie.title}</h3>
-      </div>
-    </div>
-    <div class="infos">
-      <img src="${imgPath + movie.poster_path}">
-      <div class="infos-movie">
-        <p>${movie.overview}</p>
-
-        <div class="rating">
-          <img src="assets/svg/star.svg" id="star">
-          ${movie.vote_average}
-        </div>
-
-        <div class="info">
-          <h5>Release Date</h5>
-          <h4>${movie.release_date}</h4>
-        </div>
-
-        <div class="info">
-          <h5>Genres</h5>
-          <h4>${movie.genre_ids}</h4>
-        </div>
-      </div>
-    </div>
-  `
-
-  const backMainBtn = document.getElementById('back-main')
-  backMainBtn.addEventListener('click', () => {
-    body.id = 'main-page'
-    createMovieCard()
-  })
 }
 
 function highlightInput() {
@@ -103,3 +67,16 @@ function highlightInput() {
 })
 }
 
+function searchMovie(searchTerm) {
+  movieList.forEach(movie => {
+    if (movie.innerText.toLowerCase().includes(searchTerm.toLowerCase())) {
+      movie.classList.remove('hide')
+    } else {
+      movie.classList.add('hide')
+    }
+
+    if (!searchTerm) {
+      movie.classList.remove('hide')
+    }
+  })
+}
