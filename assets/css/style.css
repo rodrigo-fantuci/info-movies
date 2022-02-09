@@ -19,11 +19,21 @@ html {
   scroll-behavior: smooth;
 }
 
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #1d1e20;
+  border-radius: 8px;
+  box-shadow: 0 0 4px rgb(0 0 0 / 50%);
+}
+
 body {
   display: flex;
   flex-direction: column;
   font-family: 'Poppins', sans-serif;
-  background-image: url(./assets/img/bg.png);
+  background-image: url('../img/bg.png');
   background-color: #121829;
   background-size: 100%;
   background-position: 50% -160px;
@@ -40,7 +50,7 @@ a {
 .container {
   max-width: 1920px;
   margin: 0 auto;
-  padding: 0 15rem;
+  padding: 0 18rem;
 }
 
 /* Header */
@@ -84,7 +94,7 @@ header nav ul.nav-ul a#suggest:hover svg {
 }
 
 header nav ul.nav-ul svg.arrow:hover {
-  stroke: var(--primary);
+  color: var(--primary);
 }
 
 header nav button.hamburger {
@@ -94,21 +104,21 @@ header nav button.hamburger {
   outline: none;
   font-size: 1.7rem;
   display: none;
+  cursor: pointer;
 }
 
 /* SVGS */
-header svg.icon {
+header img.icon {
   width: 50px;
   height: 50px;
 }
 
 header svg.arrow {
-  display: block;
   stroke: #A8AEBF;
   margin-left: .5rem;
 }
 
-main svg.search {
+.main-header img.search {
   display: block;
   stroke: #5e636e;
   fill: none;
@@ -263,11 +273,6 @@ footer ul li a:hover {
   z-index: 2;
 }
 
-.movie-card .rating svg,
-.movie-info .rating svg {
-  stroke: var(--warning);
-}
-
 /* Footer */
 
 footer {
@@ -304,6 +309,16 @@ footer ul li {
 
 footer ul a {
   text-decoration: none;
+}
+
+footer i {
+  font-size: 24px;
+  color: var(--primary);
+  margin-left: 7px;
+}
+
+footer i:hover {
+  color: var(--tertary);
 }
 
 /* Media 1200px */
@@ -405,66 +420,69 @@ footer ul a {
 /* --------------------------------------------------------------------*/
 /* Movie Info CSS */
 /* Main */
-.movie-info main {
+#movie-info {
   margin: 3.5rem 0 0 0;
+  position: relative;
 }
 
-.movie-info main .banner {
-  width: 1200px;
+#movie-info .banner {
   margin: 0 auto 120px auto;
   position: relative;
 }
 
-.movie-info main .banner img {
+#movie-info .banner img {
   border-radius: 40px;
 }
 
-.movie-info main .banner .title {
+#movie-info .banner .title {
   background: rgba(32, 40, 62, 0.8);
   backdrop-filter: blur(10px);
-  width: 560px;
-  height: 140px;
   border-radius: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  place-items: center;
+  padding: 3rem 4.5rem;
   position: absolute;
   left: 80px;
-  top: 408px;
+  top: 85%;
 }
 
-.movie-info main .banner h3 {
+#movie-info .banner h3 {
   font-size: 2rem;
   color: #EBEEF5;
-  font-weight: 600;
+  font-weight: 600;t
 }
 
-.movie-info main .infos {
+#movie-info .infos {
   margin: 0 190px;
   display: flex;
   gap: 80px;
 }
 
-.movie-info main .infos img {
+#movie-info .infos img {
   width: 480px;
   height: 720px;
   border-radius: 24px;
 }
 
-.movie-info main .infos h4#title {
+#movie-info .infos img#star {
+  width: 24px;
+  height: 24px;
+}
+
+#movie-info .infos h4#title {
   color: #EBEEF5;
   font-weight: 700;
   font-size: 1.5rem;
 }
 
-.movie-info main .infos p {
+#movie-info .infos p {
   color: #8E95A9;
   font-size: 20px;
   line-height: 32px;
   margin: 24px 0;
 }
 
-.movie-info main .rating {
+#movie-info .rating {
   color: var(--warning);
   width: 85px;
   background-color: rgba(0, 0, 0, 0.85);
@@ -478,18 +496,18 @@ footer ul a {
   margin-bottom: 24px;
 }
 
-.movie-info .info {
+#movie-info .info {
   margin: 15px 0;
 }
 
-.movie-info .info h5 {
+#movie-info .info h5 {
   color: #767E94;
   font-size: 1rem;
   font-weight: normal;
   margin-bottom: 8px;
 }
 
-.movie-info .info h4 {
+#movie-info .info h4 {
   color: #C3C8D4;
   font-size: 20px;
   font-weight: normal;
